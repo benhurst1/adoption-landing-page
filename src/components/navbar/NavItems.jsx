@@ -8,20 +8,27 @@ export default function NavItems({ isOpen }) {
   ];
 
   function mapItems() {
-    return (
-      <ul>
-        {navItems.map((item) => (
-          <li
-            key={item.id}
-            className="mt-10 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-500 hover:text-black"
-          >
-            {item.text}
-          </li>
-        ))}
-      </ul>
-    );
+    // Mobile navigation buttons
+    if (isOpen) {
+      return navItems.map((item) => (
+        <li
+          key={item.id}
+          className="hover:bg-[#00df9a] py-3 pr-10 list-none bg-pink-300 rounded-xl cursor-pointer text-right duration-500 hover:text-black"
+        >
+          {item.text}
+        </li>
+      ));
+    }
+    // wide screen navigation buttons
+    return navItems.map((item) => (
+      <li
+        key={item.id}
+        className="hover:bg-[#00df9a] p-3 list-none bg-pink-300 rounded-xl cursor-pointer text-right duration-500 hover:text-black"
+      >
+        {item.text}
+      </li>
+    ));
   }
 
   return mapItems();
-  return <>{isOpen && mapItems()}</>;
 }
